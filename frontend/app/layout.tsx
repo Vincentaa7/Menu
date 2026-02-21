@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import Navbar from "@/components/Navbar";
 import ChefBotWidget from "@/components/ChefBotWidget";
 
@@ -18,13 +19,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" className="dark">
-      <body className={`${inter.className} bg-neutral-950 text-white antialiased`}>
-        <AuthProvider>
-          <Navbar />
-          <main className="min-h-screen">{children}</main>
-          <ChefBotWidget />
-        </AuthProvider>
+    <html lang="id" suppressHydrationWarning>
+      <body
+        className={inter.className}
+        style={{ background: "var(--background)", color: "var(--foreground)" }}
+      >
+        <ThemeProvider>
+          <AuthProvider>
+            <Navbar />
+            <main className="min-h-screen">{children}</main>
+            <ChefBotWidget />
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

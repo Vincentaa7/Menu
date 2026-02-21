@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
-:root {
+/* Dark mode (default) */
+:root,
+.dark {
   --background: #0a0a0a;
   --foreground: #ededed;
   --primary: #e11d48;
@@ -17,6 +19,29 @@
   --input: rgba(255, 255, 255, 0.1);
   --ring: #e11d48;
   --radius: 0.5rem;
+  --navbar-bg: rgba(10, 10, 10, 0.8);
+  --card-bg: #171717;
+}
+
+/* Light mode */
+.light {
+  --background: #f8f8f8;
+  --foreground: #111111;
+  --primary: #e11d48;
+  --primary-foreground: #ffffff;
+  --secondary: #f0f0f0;
+  --secondary-foreground: #111111;
+  --muted: #e5e5e5;
+  --muted-foreground: #555555;
+  --accent: #f0f0f0;
+  --accent-foreground: #111111;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: rgba(0, 0, 0, 0.08);
+  --ring: #e11d48;
+  --navbar-bg: rgba(248, 248, 248, 0.85);
+  --card-bg: #ffffff;
 }
 
 * {
@@ -33,3 +58,46 @@ body {
 ::-webkit-scrollbar-track { background: #1a1a1a; }
 ::-webkit-scrollbar-thumb { background: #404040; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #525252; }
+
+/* =============================================
+   LIGHT MODE — Override hardcoded Tailwind dark classes
+   ============================================= */
+.light body {
+  background-color: #f8f8f8 !important;
+  color: #111111 !important;
+}
+
+/* Backgrounds */
+.light .bg-neutral-950 { background-color: #f8f8f8 !important; }
+.light .bg-neutral-900 { background-color: #efefef !important; }
+.light .bg-neutral-800 { background-color: #e5e5e5 !important; }
+.light .bg-neutral-700 { background-color: #d4d4d4 !important; }
+.light .bg-white\/5  { background-color: rgba(0,0,0,0.04) !important; }
+.light .bg-white\/10 { background-color: rgba(0,0,0,0.06) !important; }
+
+/* Text */
+.light .text-white       { color: #111111 !important; }
+.light .text-neutral-100 { color: #1a1a1a !important; }
+.light .text-neutral-200 { color: #262626 !important; }
+.light .text-neutral-300 { color: #404040 !important; }
+.light .text-neutral-400 { color: #525252 !important; }
+.light .text-neutral-500 { color: #737373 !important; }
+
+/* Borders */
+.light .border-white\/10  { border-color: rgba(0,0,0,0.1)  !important; }
+.light .border-white\/20  { border-color: rgba(0,0,0,0.15) !important; }
+.light .border-neutral-800 { border-color: #d4d4d4 !important; }
+.light .border-neutral-700 { border-color: #c4c4c4 !important; }
+
+/* Placeholder text */
+.light .placeholder\:text-neutral-500::placeholder { color: #9ca3af !important; }
+
+/* Hover backgrounds */
+.light .hover\:bg-white\/5:hover  { background-color: rgba(0,0,0,0.05) !important; }
+.light .hover\:bg-white\/10:hover { background-color: rgba(0,0,0,0.08) !important; }
+.light .hover\:border-rose-500\/40:hover { border-color: rgba(225,29,72,0.4) !important; }
+
+/* Gradient text headings — override with dark gradient in light mode */
+.light .from-white { --tw-gradient-from: #111111 !important; }
+.light .via-rose-100 { --tw-gradient-via: #f43f5e !important; }
+.light .to-orange-200 { --tw-gradient-to: #fb923c !important; }
