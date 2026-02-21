@@ -47,7 +47,7 @@ def chat(request: ChatRequest):
 
     try:
         completion = groq_client.chat.completions.create(
-            model="llama3-8b-8192",
+            model="llama-3.1-8b-instant",
             messages=messages,
             max_tokens=512,
             temperature=0.7,
@@ -55,4 +55,5 @@ def chat(request: ChatRequest):
         reply = completion.choices[0].message.content
         return {"reply": reply}
     except Exception as e:
+        print(f"[CHAT ERROR] {type(e).__name__}: {e}")
         raise HTTPException(status_code=500, detail=f"Groq API error: {str(e)}")
